@@ -1025,6 +1025,12 @@
 	}
 
 	api.register {
+		name = "macosxversion",
+		scope = "config",
+		kind = "string",
+	}
+
+	api.register {
 		name = "targetdir",
 		scope = "config",
 		kind = "path",

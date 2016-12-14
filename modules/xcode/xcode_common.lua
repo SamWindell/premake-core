@@ -916,6 +916,9 @@
 			StaticLib = '/usr/local/lib',
 		}
 		settings['INSTALL_PATH'] = installpaths[cfg.kind]
+		if cfg.macosxversion then
+			settings['MACOSX_DEPLOYMENT_TARGET'] = cfg.macosxversion
+		end
 
 		local fileNameList = {}
 		local file_tree = project.getsourcetree(tr.project)
@@ -990,7 +993,8 @@
 		settings['GCC_C_LANGUAGE_STANDARD'] = 'gnu99'
 
 		if cfg.flags['C++14'] then
-			settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++14'
+			settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'gnu++14'
+			settings['CLANG_CXX_LIBRARY'] = 'libc++'
 		elseif cfg.flags['C++11'] then
 			settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++0x'
 		end
